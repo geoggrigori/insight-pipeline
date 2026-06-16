@@ -50,6 +50,18 @@ Open `report/index.html` to view the dashboard.
 • Detected 2 anomalous day(s); biggest is a spike on 2025-01-31 (z=+2.8).
 ```
 
+### Generated charts
+
+The pipeline renders these automatically (real output from the bundled dataset):
+
+| Daily revenue & 7-day trend (anomalies in red) |
+|:----------------------------------------------:|
+| ![Daily revenue](docs/revenue.png) |
+
+| Revenue by category | Category growth |
+|:-------------------:|:---------------:|
+| ![By category](docs/category.png) | ![Growth](docs/growth.png) |
+
 ## 🏗️ Architecture
 
 ```
