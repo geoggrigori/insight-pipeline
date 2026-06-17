@@ -1,5 +1,7 @@
 # Insight 📊 — Data Pipeline & Automated Reporting
 
+**English** · [Português](README.pt.md) · [Español](README.es.md)
+
 A small but complete **data pipeline** that turns raw records into an **automated insights report**: it ingests a CSV (or a live public API), cleans and aggregates the data, detects trends and anomalies, and renders an HTML/Markdown report with charts — all from one command.
 
 > Ingest → Transform → Analyze → Report, as clean, tested Python.
@@ -64,15 +66,7 @@ The pipeline renders these automatically (real output from the bundled dataset):
 
 ## 🏗️ Architecture
 
-```
-  CSV / public API
-        │
-        ▼
-  ingest.py  ──▶  transform.py  ──▶  analyze.py  ──▶  report.py
-  (load +         (clean, types,     (trend, growth,   (matplotlib
-   validate)       aggregate)         anomalies,        charts +
-                                      insights)         HTML/MD)
-```
+![Architecture](docs/architecture.svg)
 
 | Module | Responsibility |
 |--------|----------------|
