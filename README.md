@@ -104,3 +104,7 @@ The analysis core is covered by deterministic unit tests — moving average, gro
 ---
 
 Built as a portfolio project to demonstrate an end-to-end data workflow: ingestion, cleaning, analysis, visualization, and automation.
+
+## License
+
+Released under the [MIT License](LICENSE).

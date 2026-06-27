@@ -104,3 +104,7 @@ El núcleo de análisis está cubierto por pruebas unitarias deterministas — m
 ---
 
 Creado como proyecto de portafolio para demostrar un flujo de datos de extremo a extremo: ingesta, limpieza, análisis, visualización y automatización.
+
+## Licencia
+
+Distribuido bajo la [Licencia MIT](LICENSE).

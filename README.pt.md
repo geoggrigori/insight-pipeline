@@ -104,3 +104,7 @@ O núcleo de análise é coberto por testes unitários determinísticos — méd
 ---
 
 Construído como projeto de portfólio para demonstrar um fluxo de dados ponta a ponta: ingestão, limpeza, análise, visualização e automação.
+
+## Licença
+
+Distribuído sob a [Licença MIT](LICENSE).
