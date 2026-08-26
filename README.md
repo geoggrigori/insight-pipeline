@@ -1,110 +1,112 @@
-# Insight 📊 — Data Pipeline & Automated Reporting
+<!-- ══════════════════════════ TÍTULO ══════════════════════════ -->
+<div align="center">
+  <img src="docs/title-banner.svg" width="100%" alt="Insight"/>
+</div>
 
-**English** · [Português](README.pt.md) · [Español](README.es.md)
+<!-- ══════════════════════ IDIOMAS / LANGUAGES ══════════════════════ -->
+<div align="center">
+<a href="README.md"><img src="https://img.shields.io/badge/Português-1987F0?style=for-the-badge" alt="Português"/></a>
+<a href="README.en.md"><img src="https://img.shields.io/badge/English-555555?style=for-the-badge" alt="English"/></a>
+<a href="README.es.md"><img src="https://img.shields.io/badge/Español-555555?style=for-the-badge" alt="Español"/></a>
+</div>
 
-A small but complete **data pipeline** that turns raw records into an **automated insights report**: it ingests a CSV (or a live public API), cleans and aggregates the data, detects trends and anomalies, and renders an HTML/Markdown report with charts — all from one command.
+<h1 align="center">Insight — Pipeline de Dados & Relatórios Automáticos</h1>
+<p align="center"><em>Transforma registros brutos em um relatório de insights automático, com um único comando</em></p>
+<p align="center"><strong>Ingestão → transformação → análise (tendência, anomalias) → relatório HTML/Markdown</strong></p>
 
-> Ingest → Transform → Analyze → Report, as clean, tested Python.
+<div align="center">
+<img src="https://github.com/geoggrigori/insight-pipeline/actions/workflows/ci.yml/badge.svg" alt="CI"/>
+<br/>
+<img src="https://img.shields.io/badge/Python_3.13-3776AB?style=flat-square&logo=python&logoColor=white" alt="python"/>
+<img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas"/>
+<img src="https://img.shields.io/badge/matplotlib-11557C?style=flat-square" alt="matplotlib"/>
+<img src="https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white" alt="pytest"/>
+<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="actions"/>
+</div>
 
-![CI](https://github.com/geoggrigori/insight-pipeline/actions/workflows/ci.yml/badge.svg)
+<div align="center">
+<a href="#sobre"><img src="https://img.shields.io/badge/▸_SOBRE-1987F0?style=for-the-badge" alt="sobre"/></a>
+<a href="#o-que-faz"><img src="https://img.shields.io/badge/▸_O_QUE_FAZ-000000?style=for-the-badge" alt="oquefaz"/></a>
+<a href="#arquitetura"><img src="https://img.shields.io/badge/▸_ARQUITETURA-1987F0?style=for-the-badge" alt="arquitetura"/></a>
+<a href="#uso"><img src="https://img.shields.io/badge/▸_USO-000000?style=for-the-badge" alt="uso"/></a>
+<a href="#automação"><img src="https://img.shields.io/badge/▸_AUTOMAÇÃO-1987F0?style=for-the-badge" alt="automacao"/></a>
+</div>
 
----
+<br/>
 
-## ✨ What it does
+> 💡 **Um comando, do CSV ao relatório.** `python -m insight run` já gera o dashboard HTML com o dataset de exemplo incluso.
 
-- **Ingest** — load a CSV (validated schema) or fetch live FX rates from a free public API (no key).
-- **Transform** — coerce types, drop bad rows, fill date gaps, aggregate to a daily series and per-category totals (pandas).
-- **Analyze** —
-  - 7-day **moving average** trend
-  - **period-over-period growth** (last *N* days vs the previous *N*)
-  - **anomaly detection** via z-scores (flags unusual spikes/dips)
-  - **per-category growth** ranking (top movers)
-  - best/worst day, category mix
-  - a set of **plain-English insights** generated from the numbers
-- **Report** — matplotlib charts + a self-contained **HTML** dashboard and a **Markdown** report.
+<div align="center">
+  <img src="docs/revenue.png" width="100%" alt="Insight — receita diária e tendência de 7 dias, com anomalias em vermelho"/>
+</div>
 
-## 🚀 Usage
+## Sobre
 
-```bash
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+**Insight** é um pipeline de dados pequeno, mas completo: ele ingere um CSV (ou consome uma API pública ao vivo), limpa e agrega os dados, detecta tendências e anomalias, e renderiza um relatório em HTML/Markdown com gráficos — tudo a partir de um único comando.
 
-# Run on the bundled sample dataset
-python -m insight run
+## O que faz
 
-# Options
-python -m insight run --input data/sample_sales.csv --out report --window 30 --z 2.5
+- **Ingestão** — carrega um CSV (com schema validado) ou busca cotações de câmbio ao vivo de uma API pública gratuita (sem chave).
+- **Transformação** — corrige tipos, descarta linhas ruins, preenche lacunas de data, agrega em série diária e totais por categoria (pandas).
+- **Análise** — média móvel de 7 dias, crescimento período-a-período, detecção de anomalias via z-score, ranking de categorias que mais cresceram, melhor/pior dia, e insights gerados em texto simples a partir dos números.
+- **Relatório** — gráficos matplotlib + dashboard HTML autocontido + relatório Markdown.
 
-# Or pull a live public dataset (FX rates, no API key)
-python -m insight run --source frankfurter
-```
-
-Open `report/index.html` to view the dashboard.
-
-### Example output
-
+**Exemplo de saída:**
 ```
 • Total revenue of $7,027,351 across 180 days (2025-01-01 → 2025-06-29).
 • Revenue is up 10.0% over the last 30 days vs the previous 30.
 • Top category is Electronics ($3,217,331, 46% of revenue).
 • Fastest-growing category: Sports (+12.8%).
-• Best day: 2025-01-31 ($59,594); slowest day: 2025-01-02 ($25,158).
 • Detected 2 anomalous day(s); biggest is a spike on 2025-01-31 (z=+2.8).
 ```
 
-### Generated charts
+| Receita por categoria | Crescimento por categoria |
+|:---:|:---:|
+| ![Por categoria](docs/category.png) | ![Crescimento](docs/growth.png) |
 
-The pipeline renders these automatically (real output from the bundled dataset):
+## Arquitetura
 
-| Daily revenue & 7-day trend (anomalies in red) |
-|:----------------------------------------------:|
-| ![Daily revenue](docs/revenue.png) |
+<div align="center">
+  <img src="docs/architecture.svg" width="100%" alt="Arquitetura"/>
+</div>
 
-| Revenue by category | Category growth |
-|:-------------------:|:---------------:|
-| ![By category](docs/category.png) | ![Growth](docs/growth.png) |
+| Módulo | Responsabilidade |
+|---|---|
+| `insight/ingest.py` | Carrega e valida o CSV de entrada |
+| `insight/transform.py` | Limpa, corrige tipos, agrega (série diária, por categoria) |
+| `insight/analyze.py` | Média móvel, crescimento, anomalias por z-score, ranking, insights |
+| `insight/report.py` | Renderiza gráficos e o relatório HTML/Markdown |
+| `insight/sources.py` | Fonte ao vivo opcional (API de câmbio Frankfurter) |
+| `insight/cli.py` | Interface de linha de comando `python -m insight run` |
 
-## 🏗️ Architecture
+## Uso
 
-![Architecture](docs/architecture.svg)
+```bash
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 
-| Module | Responsibility |
-|--------|----------------|
-| `insight/ingest.py`    | Load + validate the input CSV |
-| `insight/transform.py` | Clean, type-coerce, aggregate (daily series, by category) |
-| `insight/analyze.py`   | Moving average, growth, z-score anomalies, category movers, insights |
-| `insight/report.py`    | Render charts and the HTML/Markdown report |
-| `insight/sources.py`   | Optional live source (Frankfurter FX API) |
-| `insight/cli.py`       | `python -m insight run` command-line interface |
-| `scripts/make_sample.py` | Regenerate the deterministic sample dataset |
+python -m insight run
+python -m insight run --input data/sample_sales.csv --out report --window 30 --z 2.5
+python -m insight run --source frankfurter   # dataset público ao vivo
+```
 
-## 🧪 Tests
+Abra `report/index.html` para ver o dashboard.
 
+**Testes:**
 ```bash
 pytest -q
 ```
 
-The analysis core is covered by deterministic unit tests — moving average, growth math, anomaly detection, and category ranking on known inputs, plus an end-to-end `analyze()` check.
+## Automação
 
-## ⏱️ Automation
+`.github/workflows/report.yml` regenera o relatório **toda segunda-feira** (e sob demanda), disponibilizando-o como artefato para download — analytics agendado sem nenhuma infraestrutura. `ci.yml` roda a suíte de testes a cada push.
 
-`.github/workflows/report.yml` regenerates the report **every Monday** (and on demand) and uploads it as a downloadable artifact — a simple "scheduled analytics" setup with no infrastructure. `ci.yml` runs the test suite on every push.
+## Licença
 
-## 🛠️ Tech stack
+[MIT](LICENSE).
 
-- **Python** (3.13+), **pandas**, **matplotlib**
-- **Testing:** pytest
-- **Automation:** GitHub Actions (CI + scheduled report)
+<div align="center">
+  <img src="https://file.loading.io/color/feature/thumb/Blues-8.png?" width="100%" height="10px" alt="divider"/>
+</div>
 
-## 📝 Notes
-
-- The bundled dataset is **synthetic but realistic** (trend + weekly seasonality + injected anomalies), generated deterministically by `scripts/make_sample.py`.
-- The pipeline is **metric-agnostic**: point it at any `date, category, units, revenue` CSV, or adapt `sources.py` to another feed.
-
----
-
-Built as a portfolio project to demonstrate an end-to-end data workflow: ingestion, cleaning, analysis, visualization, and automation.
-
-## License
-
-Released under the [MIT License](LICENSE).
+<p align="center"><sub>Desenvolvido por <strong><a href="https://github.com/geoggrigori">Grigori</a></strong> · 2026</sub></p>
