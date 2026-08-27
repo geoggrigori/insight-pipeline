@@ -3,12 +3,16 @@
   <img src="docs/title-banner.svg" width="100%" alt="Insight"/>
 </div>
 
+<br/>
+
 <!-- ══════════════════════ IDIOMAS / LANGUAGES ══════════════════════ -->
 <div align="center">
 <a href="README.md"><img src="https://img.shields.io/badge/Português-1987F0?style=for-the-badge" alt="Português"/></a>
 <a href="README.en.md"><img src="https://img.shields.io/badge/English-555555?style=for-the-badge" alt="English"/></a>
 <a href="README.es.md"><img src="https://img.shields.io/badge/Español-555555?style=for-the-badge" alt="Español"/></a>
 </div>
+
+<br/>
 
 <h1 align="center">Insight — Pipeline de Dados & Relatórios Automáticos</h1>
 <p align="center"><em>Transforma registros brutos em um relatório de insights automático, com um único comando</em></p>
