@@ -14,10 +14,6 @@
 
 <br/>
 
-<h1 align="center">Insight — Pipeline de Datos & Reportes Automáticos</h1>
-<p align="center"><em>Convierte registros crudos en un reporte de insights automático, con un solo comando</em></p>
-<p align="center"><strong>Ingesta → transformación → análisis (tendencia, anomalías) → reporte HTML/Markdown</strong></p>
-
 <div align="center">
 <img src="https://github.com/geoggrigori/insight-pipeline/actions/workflows/ci.yml/badge.svg" alt="CI"/>
 <br/>
