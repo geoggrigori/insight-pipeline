@@ -14,10 +14,6 @@
 
 <br/>
 
-<h1 align="center">Insight — Data Pipeline & Automated Reporting</h1>
-<p align="center"><em>Turns raw records into an automated insights report, with one command</em></p>
-<p align="center"><strong>Ingest → transform → analyze (trend, anomalies) → HTML/Markdown report</strong></p>
-
 <div align="center">
 <img src="https://github.com/geoggrigori/insight-pipeline/actions/workflows/ci.yml/badge.svg" alt="CI"/>
 <br/>
